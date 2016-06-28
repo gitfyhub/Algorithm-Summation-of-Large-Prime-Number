@@ -18,7 +18,7 @@ Time elapsed: 00:10:12.4876617
 isPrime number sum 142913828922.
 Time elapsed: 00:10:13.0506744
 
- * -----------
+ * -----------------
 
 isPrime2 number sum 142913828922
 Time elapsed: 00:05:07.1510642
@@ -26,6 +26,11 @@ Time elapsed: 00:05:07.1510642
 isPrime2 number sum 142913828922.
 Time elapsed: 00:05:07.3628446
  
+ * -----------------
+
+isPrime3 number sum 142913828922.
+Time elapsed: 00:00:00.4453672
+
 */
 namespace SummationofPrimes
 {
@@ -39,18 +44,19 @@ namespace SummationofPrimes
 
             HashSet<long> primeNumber = new HashSet<long>();
 
-            //for (int i = 1; i < 2000000; i++)
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 2000000; i++)
+            //for (int i = 1; i < 1000; i++)
             {
-                // if (isPrime(i))
-                if (isPrime2(i))
+                //if (isPrime(i))
+                //if (isPrime2(i))
+                if (isPrime3(i))
                 {
                     //Console.WriteLine("{0}", i);
                     primeNumber.Add(i);
                 }
             }
 
-            Console.WriteLine("isPrime2 number sum {0}.", primeNumber.Sum() );
+            Console.WriteLine("isPrime3 number sum {0}.", primeNumber.Sum() );
             stopwatch.Stop();
 
             // Write result.
@@ -90,7 +96,18 @@ namespace SummationofPrimes
             }
 
             return true;
+        }
 
+        public static bool isPrime3(int number)
+        {
+            if (number < 2) return false;
+            if (number % 2 == 0) return (number == 2);
+            int root = (int)Math.Sqrt((double)number);
+            for (int i = 3; i <= root; i += 2)
+            {
+                if (number % i == 0) return false;
+            }
+            return true;
         }
 
     }
